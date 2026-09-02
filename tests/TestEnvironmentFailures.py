@@ -8,9 +8,7 @@ from in_silico import EnvironmentCheck
 class TestEnvironmentFailures(TestCase):
     def test_missing_dependency_explains_how_to_recover(self) -> None:
         original_libraries = EnvironmentCheck.REQUIRED_LIBRARIES
-        EnvironmentCheck.REQUIRED_LIBRARIES = (
-            "in-silico-missing-dependency",
-        )
+        EnvironmentCheck.REQUIRED_LIBRARIES = ("in-silico-missing-dependency",)
         message = (
             "missing required libraries: in-silico-missing-dependency. "
             "Install project dependencies and rerun environment_check."

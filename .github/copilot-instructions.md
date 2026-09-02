@@ -17,6 +17,15 @@
 
 - No comments or docstrings anywhere. Code must be self-explanatory.
 
+## README
+
+- Keep `README.md` concise, high-level, and interesting.
+- Include project context, purpose, intended audience, and useful ways to use
+  project tools.
+- Keep API inventories, environment checks, test commands, setup details, and
+  other implementation reference material in dedicated documents.
+- Link to useful deeper reading without duplicating it in the README.
+
 ## Verification
 
 After writing or editing Python, run on each changed file, in order:
