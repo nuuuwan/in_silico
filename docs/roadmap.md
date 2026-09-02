@@ -21,7 +21,7 @@ Build enough biological and pharmacological understanding to interpret later com
 
 By the end of 1.1, the learner should be able to place a result in the drug-discovery pipeline, interpret basic potency and toxicity measurements, distinguish evidence levels, recognize an unsupported claim, and choose a sensible next experiment.
 
-- [ ] 1.1.1. [Research + Python] Learn the purpose, inputs, outputs, and failure modes of target identification, hit discovery, hit-to-lead, preclinical evaluation, and clinical evaluation.
+- [x] 1.1.1. [Research + Python] Learn the purpose, inputs, outputs, and failure modes of target identification, hit discovery, hit-to-lead, preclinical evaluation, and clinical evaluation.
 
   Build a candidate-journey explorer that moves a hypothetical dengue compound through the selected stages and shows the scientific question, evidence produced, and common reason for failure at each step.
 

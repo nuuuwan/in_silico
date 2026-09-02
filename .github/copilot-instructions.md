@@ -22,6 +22,15 @@
 - Keep `README.md` concise, high-level, and interesting.
 - Include project context, purpose, intended audience, and useful ways to use
   project tools.
+- Write READMEs for lessons and tools for laypeople. Assume no prior knowledge
+  of biology, pharmacology, drug discovery, or command-line software.
+- Explain each technical term in plain language when it first appears. Expand
+  abbreviations and use concrete examples where they make a concept clearer.
+- Present lesson and tool READMEs as inviting, runnable experiments rather than
+  specifications. Let readers discover options and behavior by changing inputs,
+  comparing outcomes, and answering concrete questions.
+- Keep exhaustive option lists, output contracts, and similar reference details
+  out of lesson and tool READMEs. Put them in `--help` or deeper documentation.
 - Keep API inventories, environment checks, test commands, setup details, and
   other implementation reference material in dedicated documents.
 - Link to useful deeper reading without duplicating it in the README.

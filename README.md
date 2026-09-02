@@ -13,6 +13,10 @@ The intended learner is an experienced programmer and computer scientist who is 
 
 This is an educational research project. Computational results do not prove that a compound is safe or effective. They generate hypotheses for future laboratory research and must be confirmed through appropriate experiments.
 
-## Explore
+## Documents
 
 - [Roadmap](docs/roadmap.md)
+
+## Tools
+
+TODO
