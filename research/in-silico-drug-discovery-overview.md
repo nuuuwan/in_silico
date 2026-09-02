@@ -271,6 +271,30 @@ that a compound is a medicine. Experimental confirmation, preclinical research,
 clinical trials, regulatory review, and continuing safety monitoring are
 separate and essential parts of the journey.
 
+## Glossary
+
+The definitions below describe how this project uses each term. The source
+column points to an open or publicly accessible reference, and every reference
+includes its access date.
+
+| Term | Meaning in this project | Source |
+| --- | --- | --- |
+| Clinical efficacy | Evidence that a treatment produces a beneficial health outcome in people under stated trial conditions | [4, 5] |
+| Clinical trial | A planned study in people that follows a protocol to answer defined questions about a treatment | [4] |
+| Compound | A chemical substance being considered or tested during discovery and development | [1, 2] |
+| Computational hypothesis | A testable proposal produced or prioritized by a computer method, not a physical observation | [2, 9, 10, 11] |
+| Descriptor | A calculated number that summarizes a feature of a molecular structure | [8] |
+| Hit | A compound with a promising early screening signal that still requires confirmation | [1, 2] |
+| In silico | Work performed using computer calculations or simulations | [8, 9, 10, 11] |
+| In vitro | An experiment performed outside a living body, such as with isolated proteins or cells | [3] |
+| In vivo | An experiment performed in a whole living organism | [3] |
+| Lead | A confirmed and improved compound selected for more detailed development | [1, 2] |
+| Machine learning | A method that learns patterns from examples and uses them to predict or rank new cases | [11] |
+| Molecular docking | A method that proposes how a compound might fit into a three-dimensional target model | [9] |
+| Molecular dynamics | A simulation of how atoms in a molecular system move over time | [10] |
+| Provenance | Information about where data came from and how it was changed | [7] |
+| Target | A biological molecule or process that researchers propose changing to affect a disease | [1, 2] |
+
 ## References
 
 1. U.S. Food and Drug Administration. [Step 1: Discovery and
@@ -297,12 +321,15 @@ separate and essential parts of the journey.
    RDKit](https://www.rdkit.org/docs/Overview.html). Accessed 2026-09-02.
 9. Meng X-Y, Zhang H-X, Mezei M, Cui M. [Molecular docking: a powerful approach
    for structure-based drug
-   discovery](https://doi.org/10.2174/157340911795677602). *Current Computer-Aided
-   Drug Design*. 2011;7(2):146-157. PMID 21534921. Accessed 2026-09-02.
+   discovery](https://europepmc.org/articles/PMC3151162). *Current Computer-Aided
+   Drug Design*. 2011;7(2):146-157. DOI 10.2174/157340911795677602. PMID
+   21534921. Accessed 2026-09-02.
 10. Hollingsworth SA, Dror RO. [Molecular dynamics simulation for
-    all](https://doi.org/10.1016/j.neuron.2018.08.011). *Neuron*.
-    2018;99(6):1129-1143. PMID 30236283. Accessed 2026-09-02.
+    all](https://europepmc.org/articles/PMC6209097). *Neuron*.
+    2018;99(6):1129-1143. DOI 10.1016/j.neuron.2018.08.011. PMID 30236283.
+    Accessed 2026-09-02.
 11. Vamathevan J, Clark D, Czodrowski P, et al. [Applications of machine
     learning in drug discovery and
-    development](https://doi.org/10.1038/s41573-019-0024-5). *Nature Reviews Drug
-    Discovery*. 2019;18:463-477. PMID 31043761. Accessed 2026-09-02.
+    development](https://europepmc.org/articles/PMC10077514). *Nature Reviews Drug
+    Discovery*. 2019;18:463-477. DOI 10.1038/s41573-019-0024-5. PMID 31043761.
+    Accessed 2026-09-02.

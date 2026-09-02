@@ -77,4 +77,5 @@ under the chosen root. They do not depend on the process's working directory.
 
 ## Documents
 
+- [Public API and reproducible commands](docs/public-api.md)
 - [Roadmap](docs/roadmap.md)

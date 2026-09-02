@@ -33,8 +33,8 @@ The output of 1.1 is a usable, versioned `in_silico` package accompanied by rese
 - [x] 1.1.9. [Python] Add tests that identify missing dependencies or capabilities with actionable failure messages instead of allowing obscure downstream errors.
 - [x] 1.1.10. [Python] Define package-level configuration for `data/`, `research/`, `results/`, and `tests/` so that paths remain explicit and reproducible across environments.
 
-- [ ] 1.1.11. [Research] Add a glossary and a References section using open, public, authoritative sources, with a source and access date for every important claim.
-- [ ] 1.1.12. [Python] Document the public API boundary and the commands required to reproduce package behavior, while treating package installation as supporting setup rather than a learning objective.
+- [x] 1.1.11. [Research] Add a glossary and a References section using open, public, authoritative sources, with a source and access date for every important claim.
+- [x] 1.1.12. [Python] Document the public API boundary and the commands required to reproduce package behavior, while treating package installation as supporting setup rather than a learning objective.
 
 ### 1.2 Build a biological vocabulary for dengue and antiviral discovery
 
