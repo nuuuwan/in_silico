@@ -22,7 +22,7 @@ The output of L1.1 is a usable, versioned `in_silico` package accompanied by res
 ### 1.1 Establish the package structure and reproducible execution baseline
 
 - [ ] 1.1.1. [Python] Define the initial `in_silico` package layout under `src/in_silico/`, separating configuration, records, provenance, validation, and workflow execution behind a clear public API.
-- [ ] 1.1.2. [Research] Write `research/in-silico-drug-discovery-overview.md`, giving later implementation work a shared account of the drug-discovery process and its evidence standards.
+- [x] 1.1.2. [Research] Write `research/in-silico-drug-discovery-overview.md`, giving later implementation work a shared account of the drug-discovery process and its evidence standards.
 - [ ] 1.1.3. [Research] Explain target identification, hit discovery, hit-to-lead work, preclinical evaluation, and clinical evaluation so that each project capability can be placed in the wider pipeline.
 - [ ] 1.1.4. [Python] Create an `environment_check` command-line entry point that verifies whether the package can perform its minimum supported workflow.
 - [ ] 1.1.5. [Python] Record the Python version, operating-system details, and versions of all required scientific libraries so that a run can be reproduced and diagnosed.
