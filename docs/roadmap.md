@@ -2,119 +2,141 @@
 
 ## L1 Plan
 
-1. Build the `in_silico` foundation. Establish the package architecture, scientific record types, provenance rules, validation framework, workflow conventions, and biological vocabulary on which every later capability will depend.
-2. Add molecular-representation and descriptor capabilities. Expose chemical structures, identifiers, stereochemistry, fingerprints, and calculated properties through stable library APIs suitable for automated downstream analysis.
-3. Add dengue-dataset capabilities. Ingest public compound and bioactivity data while preserving assay context, source provenance, data-quality information, and the biological meaning of each measurement.
-4. Add molecular-similarity capabilities. Enable users to generate fingerprints, find structurally similar compounds, inspect nearest neighbors, and assess when structural similarity does or does not correspond to similar activity.
-5. Add prediction and evaluation capabilities. Provide reproducible model-training workflows with scientifically meaningful validation, uncertainty estimates, data-leakage controls, and applicability-domain checks.
-6. Add candidate-ranking and reporting capabilities. Combine evidence quality, similarity, predictions, and uncertainty into transparent rankings that inform research decisions without overstating the strength of computational evidence.
+1. Learn how evidence moves through drug discovery. Build interactive tools that teach the stages from target identification to clinical evaluation, the meaning of common assay results, and the difference between a computational hypothesis and experimental evidence.
+2. Learn how computers represent molecules. Explore atoms, bonds, stereochemistry, protonation, identifiers, fingerprints, and molecular descriptors by changing structures and observing how their representations and calculated properties change.
+3. Learn dengue biology through data. Connect the viral lifecycle, proteins, host systems, assays, and disease context to real public records while learning why provenance and experimental context matter.
+4. Learn molecular similarity and its limits. Generate fingerprints, inspect nearest neighbors, vary similarity metrics, and discover activity cliffs where structurally similar molecules behave differently.
+5. Learn prediction through controlled experiments. Train simple models, introduce realistic leakage and bias, compare validation strategies, inspect uncertainty, and learn when a prediction should not be trusted.
+6. Learn evidence-based candidate prioritization. Combine experimental evidence, similarity, predictions, uncertainty, and applicability into transparent rankings, then test how different assumptions change the result.
 
-Each L1 stage has a concrete library goal and should leave the package more capable than in the preceding stage. Only L1 stage 1 is specified at L2 and L3 below. Later stages remain outcome-level milestones until preceding work clarifies their exact scope and data requirements.
+Each L1 stage is a learning milestone expressed through runnable scientific experiments. The software exists to make important concepts observable and testable; package engineering supports that goal but is not itself the learning objective. Only stage 1 is currently expanded to L2, and only section 1.1 is expanded to L3.
 
 # L2 and L3 Plan
 
-## 1 Build the `in_silico` foundation
+## 1 Learn the drug-discovery process and its evidence
 
-Provide a stable foundation for representing scientific records, running deterministic workflows, validating inputs, tracking provenance, and interpreting the biological context of dengue drug discovery.
+Build enough biological and pharmacological understanding to interpret later computations correctly. The emphasis is on learning by changing parameters, observing consequences, and explaining why the result changed—not on production infrastructure.
 
-The output of 1.1 is a usable, versioned `in_silico` package accompanied by research notes that provide the biological context required for later features.
+### 1.1 Explore the discovery pipeline, assays, and strength of evidence
 
-### 1.1 Establish the package structure and reproducible execution baseline
+By the end of 1.1, the learner should be able to place a result in the drug-discovery pipeline, interpret basic potency and toxicity measurements, distinguish evidence levels, recognize an unsupported claim, and choose a sensible next experiment.
 
-- [ ] 1.1.1. [Python] Define the initial `in_silico` package layout under `src/in_silico/`, separating configuration, records, provenance, validation, and workflow execution behind a clear public API.
-- [ ] 1.1.2. [Research] Write `research/in-silico-drug-discovery-overview.md`, giving later implementation work a shared account of the drug-discovery process and its evidence standards.
-- [ ] 1.1.3. [Research] Explain target identification, hit discovery, hit-to-lead work, preclinical evaluation, and clinical evaluation so that each project capability can be placed in the wider pipeline.
-- [ ] 1.1.4. [Python] Create an `environment_check` command-line entry point that verifies whether the package can perform its minimum supported workflow.
-- [ ] 1.1.5. [Python] Record the Python version, operating-system details, and versions of all required scientific libraries so that a run can be reproduced and diagnosed.
+- [ ] 1.1.1. [Research + Python] Learn the purpose, inputs, outputs, and failure modes of target identification, hit discovery, hit-to-lead, preclinical evaluation, and clinical evaluation.
 
-- [ ] 1.1.6. [Research] Distinguish computational hypotheses, in vitro results, in vivo results, and clinical evidence to prevent claims from exceeding the evidence supporting them.
-- [ ] 1.1.7. [Python] Make `environment_check` run a deterministic smoke test through the public API by constructing a scientific record, calculating one property, and writing an output file.
-- [ ] 1.1.8. [Research] Explain where cheminformatics, molecular docking, molecular dynamics, and machine learning fit in the pipeline, including what each method can and cannot establish about clinical efficacy.
-- [ ] 1.1.9. [Python] Add tests that identify missing dependencies or capabilities with actionable failure messages instead of allowing obscure downstream errors.
-- [ ] 1.1.10. [Python] Define package-level configuration for `data/`, `research/`, `results/`, and `tests/` so that paths remain explicit and reproducible across environments.
+  Build a candidate-journey explorer that moves a hypothetical dengue compound through the selected stages and shows the scientific question, evidence produced, and common reason for failure at each step.
 
-- [ ] 1.1.11. [Research] Add a glossary and a References section using open, public, authoritative sources, with a source and access date for every important claim.
-- [ ] 1.1.12. [Python] Document the public API boundary and the commands required to reproduce package behavior, while treating package installation as supporting setup rather than a learning objective.
+  ```bash
+  tools/learning/candidate_journey.py --start target-identification --end clinical-evaluation --failure-mode low-selectivity
+  ```
 
-### 1.2 Build a biological vocabulary for dengue and antiviral discovery
+- [ ] 1.1.2. [Research + Python] Learn how a biological target, binding event, mechanism of action, cellular phenotype, and clinical outcome differ.
 
-- [ ] 1.2.1. [Research] Write `research/dengue-biology.md`, establishing the biological vocabulary and disease context required to interpret dengue-focused data and models.
-- [ ] 1.2.2. [Research] Describe dengue virus classification, genome organization, structural and non-structural proteins, replication, host-cell entry, and disease course as a foundation for later target selection.
-- [ ] 1.2.3. [Python] Add typed glossary and biological-entity models with fields such as `term`, `definition`, `entity_type`, `source`, and `related_terms`, allowing biological knowledge to be stored consistently.
-- [ ] 1.2.4. [Research] Explain serotypes, primary and secondary infection, antibody-dependent enhancement, and the biological factors that complicate disease severity and antiviral efficacy.
-- [ ] 1.2.5. [Research] Describe the roles of viral proteins examined in antiviral research, clearly separating established biological functions from proposed therapeutic targets.
+  Build a causal-chain explorer that lets the learner connect these concepts, deliberately break a link, and observe which downstream conclusions are no longer justified.
 
-- [ ] 1.2.6. [Python] Add validation and serialization for glossary records, exporting a stable table to `research/glossary.csv` or `data/glossary.csv` for reuse by people and software.
-- [ ] 1.2.7. [Research] Distinguish biological targets, binding sites, mechanisms of action, and measurable phenotypes so that these concepts are not conflated in records or analyses.
-- [ ] 1.2.8. [Python] Add a public search and filtering API that retrieves terms by entity type, including viruses, proteins, cells, assays, compounds, and clinical concepts.
-- [ ] 1.2.9. [Research] Support the note with open, public sources from health agencies, public databases, reviews, and accessible primary research so that its claims are traceable.
-- [ ] 1.2.10. [Python] Test duplicate terms, missing definitions, invalid entity types, serialization, and search behavior to enforce the glossary contract.
+  ```bash
+  tools/learning/causal_chain.py --target DENV2-NS5 --binding inhibited --mechanism polymerase-inhibition --phenotype reduced-replication --break-at phenotype
+  ```
 
-### 1.3 Represent molecules and biological entities as data
+- [ ] 1.1.3. [Research + Python] Learn the difference between computational hypotheses, biochemical results, cellular results, animal studies, and clinical evidence.
 
-- [ ] 1.3.1. [Research] Write `research/chemical-and-biological-representation.md`, defining how the project will represent molecular identity and biological entities without hiding important ambiguity.
-- [ ] 1.3.2. [Research] Explain atoms, bonds, formal charge, stereochemistry, tautomers, protonation states, salts, mixtures, and molecular identity at the level needed to interpret cheminformatics records.
-- [ ] 1.3.3. [Python] Add a molecular-record module that parses SMILES with RDKit and returns clear, structured errors for invalid input.
-- [ ] 1.3.4. [Research] Explain SMILES, InChI, compound and protein identifiers, amino-acid sequences, and three-dimensional structures so that each representation’s purpose is explicit.
-- [ ] 1.3.5. [Python] Convert between SMILES and RDKit molecular objects, render structure images, and preserve both original and canonical representations when they serve different provenance needs.
+  Build an evidence-ladder explorer that accepts a result and displays what it directly measures, what it only suggests, and which stronger claims remain unsupported.
 
-- [ ] 1.3.6. [Research] Explain why different textual representations can denote the same chemical entity and why structurally similar molecules can exhibit different biological behavior.
-- [ ] 1.3.7. [Python] Add data models for compounds, proteins or targets, assays, and sources so that related chemical and biological evidence can be represented together.
-- [ ] 1.3.8. [Python] Represent identifiers, provenance, missing values, and one-to-many relationships explicitly instead of reducing each chemical record to an isolated string.
-- [ ] 1.3.9. [Research] Document the limits of using static molecular records to represent dynamic biological systems, providing interpretive cautions for later analyses.
-- [ ] 1.3.10. [Python] Validate invalid SMILES, disconnected structures, duplicate canonical SMILES, and inconsistent identifiers so that unsuitable records are detected before analysis.
+  ```bash
+  tools/learning/evidence_ladder.py --method docking --result predicted-binding --target DENV2-NS5
+  ```
 
-### 1.4 Acquire, inspect, and document public scientific data
+- [ ] 1.1.4. [Research + Python] Learn how scientific claims must be calibrated to the evidence behind them.
 
-- [ ] 1.4.1. [Research] Write `research/public-data-sources.md`, describing public sources for compounds, bioactivity, proteins, structures, disease information, and dengue literature that the project could use.
-- [ ] 1.4.2. [Research] Compare candidate sources by scientific relevance and practical usability so that later dataset choices are explicit rather than opportunistic.
-- [ ] 1.4.3. [Python] Add a data-ingestion workflow that reads a source export or openly licensed fixture, normalizes columns, validates required fields, and records each raw-to-processed transformation.
-- [ ] 1.4.4. [Research] Record each source’s scope, identifiers, license or access terms, update behavior, assay context, and known limitations to support reproducible source selection.
-- [ ] 1.4.5. [Python] Use pandas to profile schema, data types, missingness, duplicates, units, and categorical values, producing an inspectable summary of the input data.
+  Build a claim sandbox that compares a proposed statement with a chosen evidence level, explains any overreach, and shows how the wording changes as biochemical, cellular, animal, or clinical evidence is added.
 
-- [ ] 1.4.6. [Research] Explain why activity values require assay conditions, endpoint definitions, units, organism or cell system, and experimental context before they can be compared.
-- [ ] 1.4.7. [Python] Preserve source identifiers, provenance fields, and conflicting values so that normalization never erases uncertainty or source-specific evidence.
-- [ ] 1.4.8. [Research] Define inclusion and exclusion rules for public data before assembling the dengue dataset, making selection decisions consistent and auditable.
-- [ ] 1.4.9. [Python] Produce a machine-readable data-quality report with row counts, validation failures, and transformation summaries so that every run can be reviewed.
-- [ ] 1.4.10. [Python] Make ingestion deterministic and rerunnable from a documented input, yielding equivalent processed data and quality reports on repeated runs.
+  ```bash
+  tools/learning/claim_sandbox.py --claim "compound X treats dengue" --evidence docking,in-vitro
+  ```
 
-### 1.5 Calculate and interpret basic molecular properties
+- [ ] 1.1.5. [Research + Python] Learn the anatomy of a dengue antiviral assay: endpoint, virus and serotype, host system, exposure time, controls, replicates, concentration range, and units.
 
-- [ ] 1.5.1. [Research] Write `research/molecular-properties-and-interpretation.md`, providing the scientific context required to calculate and interpret basic molecular descriptors responsibly.
-- [ ] 1.5.2. [Research] Explain what each property represents, how it is estimated, and how it can influence solubility, permeability, distribution, metabolism, or binding.
-- [ ] 1.5.3. [Python] Add an RDKit-based API for molecular weight, hydrogen-bond donors and acceptors, estimated lipophilicity, rotatable bonds, formal charge, and ring counts.
-- [ ] 1.5.4. [Python] Handle invalid structures and missing values explicitly, retaining an audit field that makes every calculation failure inspectable.
-- [ ] 1.5.5. [Research] Introduce drug-likeness and the appropriate use and limitations of heuristics such as Lipinski’s Rule of Five, preventing filters from being treated as efficacy rules.
+  Build an assay explorer that removes or changes one field at a time and shows how that change affects interpretation and comparability with another assay.
 
-- [ ] 1.5.6. [Python] Compare calculated values with known reference compounds and test simple molecules so that descriptor implementations have scientifically plausible checks.
-- [ ] 1.5.7. [Research] Distinguish molecular descriptors from biological endpoints and correlation from causation so that calculated properties are not mistaken for biological evidence.
-- [ ] 1.5.8. [Python] Store calculated properties in a versioned table without overwriting raw inputs, preserving both reproducibility and data lineage.
-- [ ] 1.5.9. [Research] Explain how ionization, pH, salt form, stereochemistry, and computational method affect interpretation, defining caveats for property-based comparisons.
-- [ ] 1.5.10. [Python] Flag statistical or chemically unusual values for review without automatically classifying them as errors or deleting them.
+  ```bash
+  tools/learning/assay_anatomy.py --preset cellular-antiviral --virus DENV-2 --cell-line Huh7 --remove controls
+  ```
 
-### 1.6 Explore the data with reproducible visual analysis
+- [ ] 1.1.6. [Research + Python] Learn what IC50, EC50, CC50, and selectivity index measure and why they are not interchangeable.
 
-- [ ] 1.6.1. [Research] Write `research/reading-chemical-data.md`, establishing the statistical vocabulary and interpretive safeguards needed for exploratory chemical-data analysis.
-- [ ] 1.6.2. [Research] Explain distributions, transformations, normalization, outliers, sampling bias, confounding, and uncertainty in chemical and biological datasets.
-- [ ] 1.6.3. [Python] Add a visualization workflow that generates reproducible distributions and pairwise plots from the calculated molecular properties.
-- [ ] 1.6.4. [Python] Produce molecular-weight and lipophilicity distributions, a property scatter plot, and at least one comparison across categories or source groups.
-- [ ] 1.6.5. [Research] Document valid interpretations and common failure modes for each planned figure so that visual patterns are connected to defensible claims.
+  Build an endpoint calculator that plots antiviral activity and cytotoxicity curves, computes the selected endpoints, and updates them when the learner changes curve shape, concentration range, or noise.
 
-- [ ] 1.6.6. [Python] Add labels, units, and reproducible styling, then export figures to `results/` with metadata identifying the exact input-data version.
-- [ ] 1.6.7. [Research] Explain how outliers, missing data, and sampling bias can distort conclusions, providing a conceptual basis for the demonstration in the workflow.
-- [ ] 1.6.8. [Python] Include a concrete example showing how outliers, missing data, or sampling bias changes a visualization and its apparent conclusion.
-- [ ] 1.6.9. [Python] Generate a concise Markdown summary and reproduce the same figures from a clean run, explicitly cautioning that trends in a small compound set are not general pharmacological laws.
+  ```bash
+  tools/learning/endpoint_lab.py --ec50 2 --cc50 80 --hill 1.2 --noise 0.05 --concentrations 0.01,0.1,1,10,100
+  ```
 
-### 1.7 Consolidate, test, and document the first milestone
+- [ ] 1.1.7. [Research + Python] Learn how dose–response curves, replicate variability, and incomplete concentration coverage affect potency estimates.
 
-- [ ] 1.7.1. [Research] Write `research/week-1-review.md`, consolidating the scientific understanding, implementation choices, evidence, and limitations established during the first milestone.
-- [ ] 1.7.2. [Python] Create one reproducible workflow that runs environment checks, data validation, property calculations, and figure generation in a documented order.
-- [ ] 1.7.3. [Research] Summarize the biological concepts learned, computational representations used, assumptions made, and unresolved questions that affect L1 stages 2–6.
-- [ ] 1.7.4. [Python] Add tests for the core parsing, validation, property-calculation, and data-export functions so that the milestone’s public behavior is protected.
-- [ ] 1.7.5. [Research] Inventory every compound, target, assay, and public source in the initial working set, making the project’s scientific scope explicit.
+  Build a dose–response simulator that generates replicate measurements, fits a curve, displays confidence intervals, and exposes failure cases such as a missing plateau or excessive noise.
 
-- [ ] 1.7.6. [Python] Run the workflow in a clean environment and verify that it regenerates all expected outputs without manual intervention.
-- [ ] 1.7.7. [Research] Add a limitations section covering data quality, biological uncertainty, model risk, and the distinction between ranking hypotheses and demonstrating therapeutic value.
-- [ ] 1.7.8. [Python] Generate a compact report containing environment information, dataset counts, validation results, property summaries, and links to figures for milestone review.
-- [ ] 1.7.9. [Research] Link every research note to its references and label statements as background knowledge, evidence-based findings, or project assumptions.
-- [ ] 1.7.10. [Python] Record package versions and exact input-data revisions in the report so that its results can be reproduced from the documented state.
+  ```bash
+  tools/learning/dose_response.py --true-ec50 2 --replicates 3 --noise 0.15 --max-concentration 10 --seed 42
+  ```
+
+- [ ] 1.1.8. [Research + Python] Learn what cheminformatics, molecular docking, molecular dynamics, machine learning, biochemical assays, and cellular assays can and cannot answer.
+
+  Build a method-matching sandbox that ranks methods for a selected research question, shows the inputs each requires, and distinguishes the evidence generated from the conclusion the learner hopes to reach.
+
+  ```bash
+  tools/learning/method_matcher.py --question target-binding --available structures,sequences,bioactivity --budget low
+  ```
+
+- [ ] 1.1.9. [Research + Python] Learn why controls, biological replicates, technical replicates, uncertainty, and reproducibility matter.
+
+  Build a replication simulator that lets the learner vary effect size, measurement noise, batch effects, and replicate counts, then compare how stable the estimated effect is across repeated experiments.
+
+  ```bash
+  tools/learning/replication_lab.py --effect 0.4 --biological-replicates 3 --technical-replicates 2 --batch-effect 0.15 --runs 100 --seed 42
+  ```
+
+- [ ] 1.1.10. [Research + Python] Learn why two apparently similar activity measurements may disagree or be impossible to combine.
+
+  Build an assay-comparison sandbox that varies endpoint, units, serotype, cell line, exposure time, and censoring, then identifies which differences can be normalized and which change the biological meaning.
+
+  ```bash
+  tools/learning/compare_assays.py --left data/demo/assay_a.json --right data/demo/assay_b.json --vary cell-line,time,endpoint
+  ```
+
+- [ ] 1.1.11. [Research + Python] Learn the core vocabulary needed to read dengue drug-discovery papers and datasets without conflating related concepts.
+
+  Build a contextual term explorer that takes a term such as `target`, `hit`, `potency`, or `efficacy`, shows it inside an assay or pipeline example, and contrasts it with commonly confused terms using source-backed definitions.
+
+  ```bash
+  tools/learning/term_in_context.py --term efficacy --contrast potency,activity --context antiviral-assay
+  ```
+
+- [ ] 1.1.12. [Research + Python] Apply the section’s concepts to a small, source-backed dengue case study.
+
+  Build a case-study sandbox in which the learner changes assay results and available evidence for a hypothetical NS5 inhibitor, then observes how the supported claim, uncertainty, pipeline position, and recommended next experiment change.
+
+  ```bash
+  tools/learning/dengue_case_study.py --target DENV2-NS5 --ec50 2 --cc50 80 --evidence docking,cellular --replicates 3
+  ```
+
+### 1.2 Learn the biological vocabulary of dengue and antiviral discovery
+
+Learn the viral lifecycle, genome, proteins, host interactions, disease course, and vocabulary needed to interpret dengue-focused data and models. **L3 planning is intentionally deferred until 1.1 is complete.**
+
+### 1.3 Learn how molecules and biological entities are represented
+
+Explore how molecular identity, proteins, targets, assays, identifiers, relationships, ambiguity, and provenance appear in scientific software and datasets. **L3 planning is intentionally deferred until 1.1 is complete.**
+
+### 1.4 Learn to acquire and critically inspect public scientific data
+
+Learn how source scope, licensing, provenance, assay context, missingness, normalization, and selection rules shape a scientific dataset. **L3 planning is intentionally deferred until 1.1 is complete.**
+
+### 1.5 Learn to calculate and interpret basic molecular properties
+
+Explore what common molecular descriptors measure, how they are calculated, what changes them, and why they are not direct evidence of biological activity. **L3 planning is intentionally deferred until 1.1 is complete.**
+
+### 1.6 Learn exploratory analysis through reproducible visual experiments
+
+Learn how distributions, transformations, missingness, outliers, confounding, and sampling bias change visual patterns and their defensible interpretation. **L3 planning is intentionally deferred until 1.1 is complete.**
+
+### 1.7 Consolidate and demonstrate the first learning milestone
+
+Combine the scientific concepts and runnable experiments into one reproducible demonstration, with the learner able to explain the evidence, assumptions, limitations, and unresolved questions. **L3 planning is intentionally deferred until 1.1 is complete.**
