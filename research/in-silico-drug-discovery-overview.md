@@ -97,149 +97,101 @@ serve as a clear public example, not a worldwide rulebook.
 Approval is not the end of learning. Rare or delayed problems may appear only
 after many more people use a medicine, so safety monitoring continues [6].
 
-## Discovery and development
+## Where this project fits
 
-### Disease understanding and target identification
+`in_silico` supports the early stages of discovery. Its planned capabilities fit
+into the wider process as follows:
 
-Research first defines the unmet need and the biological process to influence.
-A target may be a viral protein, host protein, pathway, or measurable phenotype.
-Evidence should connect the target to disease biology and show that changing it
-could produce a useful effect without unacceptable harm.
-
-Computational analyses can integrate literature, sequences, structures, and
-known interactions. Their output is a target hypothesis. Target relevance and
-tractability remain separate questions, and neither proves that modulation will
-benefit a patient.
-
-### Hit discovery
-
-Researchers search for compounds that produce a desired signal in biochemical,
-cellular, or phenotypic assays. Searches may use experimental screening,
-structure-based methods, ligand similarity, machine learning, or combinations of
-these approaches. FDA's overview notes that early discovery may examine thousands
-of compounds before a small number are selected for further study [1].
-
-A computational hit is a prioritized candidate, not an experimentally confirmed
-hit. An experimental screening signal is also provisional until identity,
-concentration-response behavior, assay artifacts, and orthogonal or secondary
-assays have been considered. The NCATS Assay Guidance Manual treats assay
-optimization, interference, statistical validation, secondary assays, and data
-reporting as integral to reliable screening [2].
-
-### Hit-to-lead and lead optimization
-
-Confirmed hits are investigated for potency, selectivity, mechanism, chemical
-identity, and reproducibility. Medicinal chemistry and repeated testing seek a
-lead series with an acceptable balance of biological activity and developability.
-Relevant properties include absorption, distribution, metabolism, excretion,
-toxicity, route of administration, dose, and interactions with other treatments
-[1]. A stronger score on one property cannot compensate automatically for weak or
-missing evidence elsewhere.
-
-### Preclinical evaluation
-
-Preclinical work combines in vitro and in vivo studies to characterize
-pharmacology, exposure, and toxicity before human testing. FDA describes good
-laboratory practice requirements covering study conduct, personnel, facilities,
-equipment, protocols, procedures, reports, and quality assurance [3]. Preclinical
-results support decisions about whether and how to proceed; they do not substitute
-for evidence from humans [4].
-
-### Clinical evaluation and review
-
-Clinical trials answer defined questions in people under a protocol. Typical
-phases progress from initial safety and dosage studies, through preliminary
-efficacy and side-effect studies, to larger controlled studies of efficacy and
-adverse reactions [4]. Regulatory review considers the full body of evidence,
-including preclinical and clinical data, manufacturing information, analyses,
-and proposed use [5]. Exact pathways and legal standards depend on jurisdiction;
-the FDA material cited here is a clear public example, not a universal rulebook.
-
-Approval does not make knowledge complete. Rare, delayed, or population-specific
-effects may emerge only after wider use, so safety evidence continues to evolve
-through post-market monitoring [6].
-
-## Evidence hierarchy
-
-Evidence categories answer different questions and must remain distinct:
-
-| Evidence | What it can support | What it cannot establish alone |
+| Project capability | Where it helps | What it contributes |
 | --- | --- | --- |
-| Computational | Plausibility, similarity, predicted binding or activity, and priorities for testing | Physical binding, biological activity, safety, or clinical benefit |
-| In vitro | Activity or toxicity in a defined biochemical or cellular system | Whole-organism exposure, safety, or clinical efficacy |
-| In vivo | Effects in a specified organism and experimental model | Equivalent effects or acceptable risk in humans |
-| Clinical | Safety or efficacy for the studied people, intervention, comparator, dose, and endpoints | Universal benefit outside the studied context or complete long-term safety |
-| Post-market | Performance and uncommon risks across broader real-world use | Absence of all bias, confounding, or unobserved risk |
+| Biological terms and target records | Target identification | Keeps a clear account of a target and why it may matter |
+| Public compound and activity data | Target identification and hit discovery | Collects existing evidence and possible starting compounds |
+| Molecular representations and properties | Hit discovery and hit-to-lead work | Describes compounds consistently and highlights features to investigate |
+| Similarity search | Hit discovery and hit-to-lead work | Finds related compounds for comparison |
+| Prediction and model evaluation | Hit discovery and hit-to-lead work | Ranks ideas for testing and reports uncertainty |
+| Candidate ranking and reports | Hit discovery and hit-to-lead work | Shows why one hypothesis was ranked above another |
 
-Higher categories do not erase lower-level uncertainty. Evidence accumulates
-across methods, and disagreements are findings to preserve rather than values to
-average away. A useful claim names the intervention, system, endpoint, conditions,
-and uncertainty instead of saying simply that a compound "works."
+The intended result is a transparent list of compounds that may be worth
+testing. The software does not confirm hits, perform preclinical studies, run
+clinical trials, approve medicines, or monitor safety. A highly ranked compound
+remains a hypothesis until experiments provide stronger evidence.
 
-## Evidence standards for this project
+## Different kinds of evidence
 
-### Provenance and identity
+Each kind of research answers a different question. One should not be presented
+as if it answered them all.
 
-Every important value must retain its source, source identifier, retrieval date,
-and transformation history. Compound identity must distinguish original and
-standardized representations and must not silently merge salts, stereoisomers,
-tautomers, mixtures, or conflicting identifiers. FAIR guidance emphasizes rich
-metadata, persistent identifiers, licenses, provenance, and domain standards to
-make digital objects reusable [7].
+| Evidence | What it may show | What it cannot show by itself |
+| --- | --- | --- |
+| Computer result | A compound or target is worth investigating | The compound physically works, is safe, or helps people |
+| In vitro result | An effect occurs in a particular laboratory test | The same effect occurs in a whole body |
+| In vivo result | An effect occurs in a particular living model | The same benefit and risk will occur in humans |
+| Clinical result | What happened to the people studied under stated conditions | What will happen to every person or over unlimited time |
+| After-approval data | How a medicine performs during wider use | That every possible risk has been found |
 
-### Experimental context
+Evidence becomes stronger by combining well-designed studies, not merely by
+moving down the table. Results may disagree. Those disagreements must be kept
+and investigated rather than hidden or averaged away.
 
-Bioactivity values are meaningful only with their endpoint, units, assay format,
-biological system, organism or cell line, protocol conditions, controls, and
-qualifiers. Values from different contexts must not be treated as directly
-comparable merely because they share a label such as `IC50`.
+It is more accurate to say, "The compound reduced this measurement in these
+cells under these conditions," than to say, "The compound works." The first
+statement tells the reader what was actually observed.
 
-### Validation and quality
+## How the project will handle evidence
 
-Inputs must be checked for invalid structures, missing fields, impossible units,
-duplicates, inconsistent identifiers, and unsupported transformations. Assay
-records should retain controls, replicate information, variability, detection
-limits, and known interference risks when available. Failed validation remains
-inspectable; it is not silently discarded.
+### Keep the source
 
-### Computational evaluation
+Every important value should retain where it came from, when it was retrieved,
+and what changes were made to it. This history is called *provenance*. Keeping
+it allows someone else to inspect or repeat the work. The FAIR Principles also
+recommend clear identifiers, descriptions, licenses, provenance, and shared
+standards so digital research objects can be reused [7].
 
-Models and rankings must record the exact data revision, feature generation,
-software versions, parameters, random seeds, split strategy, metrics, and
-applicability limits. Evaluation data must be independent of model fitting and
-selection. Chemical series, duplicate measurements, and related compounds require
-special care because random splitting can overstate performance through leakage.
+### Keep the scientific context
 
-Performance must be reported with uncertainty and relevant baselines. Predictions
-outside the represented chemical or biological domain must be flagged. Rankings
-are decision aids for allocating experimental attention, not declarations of
-therapeutic value.
+A biological activity number has little meaning on its own. Its meaning depends
+on what was measured, the units, the test method, the cells or organism used,
+the dose, the timing, the controls, and other conditions. Two values with the
+same label should not be compared automatically when they came from different
+tests.
 
-### Reproducibility and communication
+### Keep compound identity precise
 
-Workflows should be deterministic where practical and preserve raw inputs,
-processed outputs, configuration, environment information, and failure reports.
-Reports must separate observed source data, calculated values, model predictions,
-and project assumptions. Negative, missing, conflicting, and inconclusive results
-must remain visible.
+One compound may be written in several ways, while very similar names may refer
+to importantly different forms. The project should preserve both the original
+record and any cleaned version. It should not silently combine mixtures,
+different three-dimensional forms, salts, or conflicting identifiers.
 
-## Implications for `in_silico`
+### Check data instead of hiding problems
 
-The package should therefore:
+The software should look for missing information, invalid chemical structures,
+impossible units, duplicates, and conflicting identifiers. A failed check should
+remain visible with a useful explanation. Quietly deleting awkward data would
+make the final result look more certain than it is.
 
-- represent compounds, targets, assays, sources, and observations explicitly;
-- attach provenance and biological context to evidence rather than isolated
-  numbers;
-- preserve raw data while creating versioned derived records;
-- make validation failures and uncertainty machine-readable;
-- prevent data leakage and document applicability limits in model evaluation;
-- produce reproducible workflows with inspectable inputs and outputs; and
-- use claim language no stronger than the evidence category permits.
+### Test computer models fairly
 
-The immediate project outcome is a transparent ranked list of hypotheses worth
-investigating. Experimental confirmation, preclinical development, clinical
-evaluation, regulatory review, and ongoing safety monitoring remain outside what
-the software alone can establish.
+A model must be tested using data that was not used to build or choose it.
+Nearly identical compounds can accidentally appear in both training and test
+data, making performance look better than it really is. Reports should record
+the data version, settings, software versions, random choices, test method,
+results, uncertainty, and the kinds of compounds for which the model may not be
+reliable.
+
+### Make the work repeatable
+
+Where practical, running the same workflow with the same inputs should produce
+the same outputs. The project should preserve raw inputs, cleaned data, settings,
+software information, outputs, and failures. Reports should clearly separate
+source observations, calculated values, computer predictions, and project
+assumptions.
+
+## The central limitation
+
+This project can organize evidence and rank hypotheses. It cannot demonstrate
+that a compound is a medicine. Experimental confirmation, preclinical research,
+clinical trials, regulatory review, and continuing safety monitoring are
+separate and essential parts of the journey.
 
 ## References
 
