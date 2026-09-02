@@ -13,11 +13,11 @@ Each L1 stage has a concrete library goal and should leave the package more capa
 
 # L2 and L3 Plan
 
-## 1.1 Build the `in_silico` foundation
+## 1 Build the `in_silico` foundation
 
 Provide a stable foundation for representing scientific records, running deterministic workflows, validating inputs, tracking provenance, and interpreting the biological context of dengue drug discovery.
 
-The output of 1.1 is a usable, versioned `in_silico` package accompanied by research notes that provide the biological context required for later features. Each L2 subsection must add or improve library functionality, supported by tests and documentation. Research tasks are also L3 items: they produce Markdown notes based on open, public sources and inform corresponding API and data-model decisions. Python and research items are interleaved where either provides essential context for the other.
+The output of 1.1 is a usable, versioned `in_silico` package accompanied by research notes that provide the biological context required for later features.
 
 ### 1.1 Establish the package structure and reproducible execution baseline
 

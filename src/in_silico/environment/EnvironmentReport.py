@@ -14,11 +14,14 @@ class EnvironmentReport:
     operating_system: str
     operating_system_release: str
     machine: str
+    smoke_test_output: str
     libraries: tuple[LibraryVersion, ...]
 
     @classmethod
     def capture(
-        cls, libraries: tuple[LibraryVersion, ...]
+        cls,
+        libraries: tuple[LibraryVersion, ...],
+        smoke_test_output: str,
     ) -> "EnvironmentReport":
         try:
             package_version = version("in-silico")
@@ -31,6 +34,7 @@ class EnvironmentReport:
             platform.system(),
             platform.release(),
             platform.machine(),
+            smoke_test_output,
             libraries,
         )
 
