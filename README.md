@@ -15,5 +15,4 @@ This is an educational research project. Computational results do not prove that
 
 ## Explore
 
-- [How in-silico drug discovery works](research/in-silico-drug-discovery-overview.md)
 - [Roadmap](docs/roadmap.md)

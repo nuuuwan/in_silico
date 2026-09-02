@@ -21,20 +21,20 @@ The output of 1.1 is a usable, versioned `in_silico` package accompanied by rese
 
 ### 1.1 Establish the package structure and reproducible execution baseline
 
-- [x] 1.1.1. [Python] Define the initial `in_silico` package layout under `src/in_silico/`, separating configuration, records, provenance, validation, and workflow execution behind a clear public API.
-- [x] 1.1.2. [Research] Write `research/in-silico-drug-discovery-overview.md`, giving later implementation work a shared account of the drug-discovery process and its evidence standards.
-- [x] 1.1.3. [Research] Explain target identification, hit discovery, hit-to-lead work, preclinical evaluation, and clinical evaluation so that each project capability can be placed in the wider pipeline.
-- [x] 1.1.4. [Python] Create an `environment_check` command-line entry point that verifies whether the package can perform its minimum supported workflow.
-- [x] 1.1.5. [Python] Record the Python version, operating-system details, and versions of all required scientific libraries so that a run can be reproduced and diagnosed.
+- [ ] 1.1.1. [Python] Define the initial `in_silico` package layout under `src/in_silico/`, separating configuration, records, provenance, validation, and workflow execution behind a clear public API.
+- [ ] 1.1.2. [Research] Write `research/in-silico-drug-discovery-overview.md`, giving later implementation work a shared account of the drug-discovery process and its evidence standards.
+- [ ] 1.1.3. [Research] Explain target identification, hit discovery, hit-to-lead work, preclinical evaluation, and clinical evaluation so that each project capability can be placed in the wider pipeline.
+- [ ] 1.1.4. [Python] Create an `environment_check` command-line entry point that verifies whether the package can perform its minimum supported workflow.
+- [ ] 1.1.5. [Python] Record the Python version, operating-system details, and versions of all required scientific libraries so that a run can be reproduced and diagnosed.
 
-- [x] 1.1.6. [Research] Distinguish computational hypotheses, in vitro results, in vivo results, and clinical evidence to prevent claims from exceeding the evidence supporting them.
-- [x] 1.1.7. [Python] Make `environment_check` run a deterministic smoke test through the public API by constructing a scientific record, calculating one property, and writing an output file.
-- [x] 1.1.8. [Research] Explain where cheminformatics, molecular docking, molecular dynamics, and machine learning fit in the pipeline, including what each method can and cannot establish about clinical efficacy.
-- [x] 1.1.9. [Python] Add tests that identify missing dependencies or capabilities with actionable failure messages instead of allowing obscure downstream errors.
-- [x] 1.1.10. [Python] Define package-level configuration for `data/`, `research/`, `results/`, and `tests/` so that paths remain explicit and reproducible across environments.
+- [ ] 1.1.6. [Research] Distinguish computational hypotheses, in vitro results, in vivo results, and clinical evidence to prevent claims from exceeding the evidence supporting them.
+- [ ] 1.1.7. [Python] Make `environment_check` run a deterministic smoke test through the public API by constructing a scientific record, calculating one property, and writing an output file.
+- [ ] 1.1.8. [Research] Explain where cheminformatics, molecular docking, molecular dynamics, and machine learning fit in the pipeline, including what each method can and cannot establish about clinical efficacy.
+- [ ] 1.1.9. [Python] Add tests that identify missing dependencies or capabilities with actionable failure messages instead of allowing obscure downstream errors.
+- [ ] 1.1.10. [Python] Define package-level configuration for `data/`, `research/`, `results/`, and `tests/` so that paths remain explicit and reproducible across environments.
 
-- [x] 1.1.11. [Research] Add a glossary and a References section using open, public, authoritative sources, with a source and access date for every important claim.
-- [x] 1.1.12. [Python] Document the public API boundary and the commands required to reproduce package behavior, while treating package installation as supporting setup rather than a learning objective.
+- [ ] 1.1.11. [Research] Add a glossary and a References section using open, public, authoritative sources, with a source and access date for every important claim.
+- [ ] 1.1.12. [Python] Document the public API boundary and the commands required to reproduce package behavior, while treating package installation as supporting setup rather than a learning objective.
 
 ### 1.2 Build a biological vocabulary for dengue and antiviral discovery
 
