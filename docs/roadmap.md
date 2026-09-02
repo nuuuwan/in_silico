@@ -17,11 +17,11 @@ Each L1 stage has a concrete library goal and should leave the package more capa
 
 Provide a stable foundation for representing scientific records, running deterministic workflows, validating inputs, tracking provenance, and interpreting the biological context of dengue drug discovery.
 
-The output of L1.1 is a usable, versioned `in_silico` package accompanied by research notes that provide the biological context required for later features. Each L2 subsection must add or improve library functionality, supported by tests and documentation. Research tasks are also L3 items: they produce Markdown notes based on open, public sources and inform corresponding API and data-model decisions. Python and research items are interleaved where either provides essential context for the other.
+The output of 1.1 is a usable, versioned `in_silico` package accompanied by research notes that provide the biological context required for later features. Each L2 subsection must add or improve library functionality, supported by tests and documentation. Research tasks are also L3 items: they produce Markdown notes based on open, public sources and inform corresponding API and data-model decisions. Python and research items are interleaved where either provides essential context for the other.
 
 ### 1.1 Establish the package structure and reproducible execution baseline
 
-- [ ] 1.1.1. [Python] Define the initial `in_silico` package layout under `src/in_silico/`, separating configuration, records, provenance, validation, and workflow execution behind a clear public API.
+- [x] 1.1.1. [Python] Define the initial `in_silico` package layout under `src/in_silico/`, separating configuration, records, provenance, validation, and workflow execution behind a clear public API.
 - [x] 1.1.2. [Research] Write `research/in-silico-drug-discovery-overview.md`, giving later implementation work a shared account of the drug-discovery process and its evidence standards.
 - [ ] 1.1.3. [Research] Explain target identification, hit discovery, hit-to-lead work, preclinical evaluation, and clinical evaluation so that each project capability can be placed in the wider pipeline.
 - [ ] 1.1.4. [Python] Create an `environment_check` command-line entry point that verifies whether the package can perform its minimum supported workflow.

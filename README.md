@@ -13,6 +13,24 @@ The intended learner is an experienced programmer and computer scientist who is 
 
 This is an educational research project. Computational results do not prove that a compound is safe or effective. They generate hypotheses for future laboratory research and must be confirmed through appropriate experiments.
 
+## Public API
+
+The supported API is exported from `in_silico`:
+
+```python
+from in_silico import (
+	Configuration,
+	Provenance,
+	RecordValidator,
+	ScientificRecord,
+	ValidationResult,
+	Workflow,
+)
+```
+
+Implementations are separated into `configuration`, `provenance`, `records`,
+`validation`, and `workflows` packages under `src/in_silico/`.
+
 ## Documents
 
 - [Roadmap](docs/roadmap.md)
