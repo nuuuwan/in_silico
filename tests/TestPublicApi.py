@@ -28,5 +28,7 @@ class TestPublicApi(TestCase):
         record = ScientificRecord("", {})
         workflow = Workflow(RecordValidator(("smiles",)))
 
-        with self.assertRaisesRegex(ValueError, "identifier must not be empty"):
+        with self.assertRaisesRegex(
+            ValueError, "identifier must not be empty"
+        ):
             workflow.run(record)
