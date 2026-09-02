@@ -30,8 +30,8 @@ The output of 1.1 is a usable, versioned `in_silico` package accompanied by rese
 - [x] 1.1.6. [Research] Distinguish computational hypotheses, in vitro results, in vivo results, and clinical evidence to prevent claims from exceeding the evidence supporting them.
 - [x] 1.1.7. [Python] Make `environment_check` run a deterministic smoke test through the public API by constructing a scientific record, calculating one property, and writing an output file.
 - [x] 1.1.8. [Research] Explain where cheminformatics, molecular docking, molecular dynamics, and machine learning fit in the pipeline, including what each method can and cannot establish about clinical efficacy.
-- [ ] 1.1.9. [Python] Add tests that identify missing dependencies or capabilities with actionable failure messages instead of allowing obscure downstream errors.
-- [ ] 1.1.10. [Python] Define package-level configuration for `data/`, `research/`, `results/`, and `tests/` so that paths remain explicit and reproducible across environments.
+- [x] 1.1.9. [Python] Add tests that identify missing dependencies or capabilities with actionable failure messages instead of allowing obscure downstream errors.
+- [x] 1.1.10. [Python] Define package-level configuration for `data/`, `research/`, `results/`, and `tests/` so that paths remain explicit and reproducible across environments.
 
 - [ ] 1.1.11. [Research] Add a glossary and a References section using open, public, authoritative sources, with a source and access date for every important claim.
 - [ ] 1.1.12. [Python] Document the public API boundary and the commands required to reproduce package behavior, while treating package installation as supporting setup rather than a learning objective.

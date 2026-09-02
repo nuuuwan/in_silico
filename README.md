@@ -53,6 +53,28 @@ The command also writes `environment_check_smoke_test.json`. This deterministic
 artifact proves that the public API can construct and validate a scientific
 record, calculate its `record_value_count` property, and write a result file.
 
+Before running the smoke test, the command checks required libraries and output
+capabilities. Failures identify what is missing and how to recover.
+
+## Project paths
+
+`Configuration` derives stable paths from an explicit project root:
+
+```python
+from pathlib import Path
+
+from in_silico import Configuration
+
+configuration = Configuration(Path("/path/to/project"))
+configuration.data_path
+configuration.research_path
+configuration.results_path
+configuration.tests_path
+```
+
+These properties always refer to `data/`, `research/`, `results/`, and `tests/`
+under the chosen root. They do not depend on the process's working directory.
+
 ## Documents
 
 - [Roadmap](docs/roadmap.md)

@@ -17,9 +17,14 @@ class EnvironmentCheck:
 
     @classmethod
     def run(cls, output_path: Path | None = None) -> EnvironmentReport:
-        smoke_test_output = cls._run_smoke_test(
-            output_path or cls.DEFAULT_OUTPUT_PATH
-        )
+        output_path = output_path or cls.DEFAULT_OUTPUT_PATH
+        libraries = cls._verify_libraries()
+        cls._verify_output_path(output_path)
+        smoke_test_output = cls._run_smoke_test(output_path)
+        return EnvironmentReport.capture(libraries, smoke_test_output)
+
+    @classmethod
+    def _verify_libraries(cls) -> tuple[LibraryVersion, ...]:
         libraries = tuple(
             LibraryVersion.capture(name) for name in cls.REQUIRED_LIBRARIES
         )
@@ -28,8 +33,25 @@ class EnvironmentCheck:
         ]
         if missing:
             names = ", ".join(missing)
-            raise RuntimeError(f"missing required libraries: {names}")
-        return EnvironmentReport.capture(libraries, smoke_test_output)
+            message = (
+                f"missing required libraries: {names}. "
+                "Install project dependencies and rerun environment_check."
+            )
+            raise RuntimeError(message)
+        return libraries
+
+    @staticmethod
+    def _verify_output_path(output_path: Path) -> None:
+        parent = output_path.parent
+        if not parent.exists():
+            message = (
+                f"smoke-test output directory does not exist: {parent}. "
+                "Create it or choose an output path in an existing directory."
+            )
+            raise RuntimeError(message)
+        if not parent.is_dir():
+            message = f"smoke-test output parent is not a directory: {parent}"
+            raise RuntimeError(message)
 
     @staticmethod
     def _run_smoke_test(output_path: Path) -> str:
