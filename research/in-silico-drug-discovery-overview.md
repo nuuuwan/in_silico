@@ -137,6 +137,84 @@ It is more accurate to say, "The compound reduced this measurement in these
 cells under these conditions," than to say, "The compound works." The first
 statement tells the reader what was actually observed.
 
+### Match each claim to its evidence
+
+The wording of a claim must reveal what was actually done:
+
+| Evidence available | Defensible claim | Claim that goes too far |
+| --- | --- | --- |
+| Computer calculation | "The model predicts that this compound may bind." | "This compound binds to the target." |
+| In vitro experiment | "The compound reduced viral activity in these cells." | "The compound treats infection in a body." |
+| In vivo experiment | "The compound reduced this outcome in this animal model." | "The compound will work safely in humans." |
+| Clinical study | "The treatment improved this outcome in the people studied." | "The treatment works for everyone and has no unknown risks." |
+
+A computer result is a *hypothesis*: an idea that can guide a test. An in vitro
+result is a physical observation, but only in the stated laboratory system. An
+in vivo result includes the complexity of a living organism, but a model organism
+is not a human. Clinical evidence comes from people, yet it still applies only to
+the studied treatment, dose, participants, comparison, outcome, and time period.
+
+None of these labels guarantees that a study was well designed. Sample size,
+controls, measurement quality, bias, and uncertainty still matter. Later-stage
+evidence answers broader questions, but it does not turn an earlier prediction
+into an observation or erase conflicting results.
+
+## What the main computer methods do
+
+These methods often work together near the beginning of drug discovery. They
+help researchers decide what to test, but they answer different questions.
+
+### Cheminformatics
+
+Cheminformatics uses computers to store, clean, search, compare, and calculate
+information about chemical structures. It can identify duplicate records, find
+similar compounds, and calculate descriptors: numbers that summarize structural
+features. RDKit, which this project plans to use, provides two- and
+three-dimensional molecular operations and descriptor generation [8].
+
+Cheminformatics can show that two recorded structures are similar or that a
+calculated property differs. It cannot show that a compound binds to a target,
+changes a cell, is safe in a body, or helps a patient.
+
+### Molecular docking
+
+Molecular docking tries possible positions of a compound in a three-dimensional
+model of a target and scores how well each pose appears to fit. It can suggest a
+possible binding pose and help prioritize compounds for physical tests [9].
+
+The result depends on the target structure, compound form, scoring method, and
+other assumptions. A good docking score is not proof of binding. Docking alone
+cannot establish activity in cells, safety, or clinical benefit.
+
+### Molecular dynamics
+
+Molecular dynamics simulates how atoms move over time according to a physical
+model. It can explore how a protein changes shape, how a proposed complex might
+move, and which interactions may persist. Reviews describe it as an atom-level
+view that can explain mechanisms and motivate further experiments [10].
+
+A simulation covers a chosen model and limited simulated time. Its usefulness
+depends on its starting structure and physical assumptions. It is not a living
+cell, organism, or clinical trial, and cannot demonstrate clinical efficacy.
+
+### Machine learning
+
+Machine learning finds patterns in examples and uses those patterns to predict
+new cases. In drug discovery it can rank compounds, predict measured properties,
+or help select the next experiment [11].
+
+Its predictions inherit the strengths, gaps, and biases of the training data.
+Performance on a test dataset does not prove that the model will work for new
+chemical families or biological settings. Machine learning can prioritize a
+hypothesis; it cannot turn a prediction into laboratory or clinical evidence.
+
+### Their shared limit
+
+All four methods can reduce a large search to a smaller, better-documented set of
+questions. Agreement between methods may strengthen the reason to run an
+experiment, but it does not replace that experiment. None can establish that a
+compound is clinically effective without suitable evidence from people.
+
 ## How the project will handle evidence
 
 ### Keep the source
@@ -215,3 +293,16 @@ separate and essential parts of the journey.
    Content current 2018-01-04. Accessed 2026-09-02.
 7. GO FAIR. [FAIR Principles](https://www.go-fair.org/fair-principles/).
    Accessed 2026-09-02.
+8. RDKit contributors. [An overview of the
+   RDKit](https://www.rdkit.org/docs/Overview.html). Accessed 2026-09-02.
+9. Meng X-Y, Zhang H-X, Mezei M, Cui M. [Molecular docking: a powerful approach
+   for structure-based drug
+   discovery](https://doi.org/10.2174/157340911795677602). *Current Computer-Aided
+   Drug Design*. 2011;7(2):146-157. PMID 21534921. Accessed 2026-09-02.
+10. Hollingsworth SA, Dror RO. [Molecular dynamics simulation for
+    all](https://doi.org/10.1016/j.neuron.2018.08.011). *Neuron*.
+    2018;99(6):1129-1143. PMID 30236283. Accessed 2026-09-02.
+11. Vamathevan J, Clark D, Czodrowski P, et al. [Applications of machine
+    learning in drug discovery and
+    development](https://doi.org/10.1038/s41573-019-0024-5). *Nature Reviews Drug
+    Discovery*. 2019;18:463-477. PMID 31043761. Accessed 2026-09-02.

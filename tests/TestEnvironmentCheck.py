@@ -53,7 +53,9 @@ class TestEnvironmentCheck(TestCase):
             EnvironmentCheck.run(first_path)
             EnvironmentCheck.run(second_path)
 
-            self.assertEqual(first_path.read_bytes(), second_path.read_bytes())
+            self.assertEqual(
+                first_path.read_bytes(), second_path.read_bytes()
+            )
 
     def test_public_property_calculator_counts_record_values(self) -> None:
         record = ScientificRecord("example", {"first": 1, "second": 2})

@@ -27,9 +27,9 @@ The output of 1.1 is a usable, versioned `in_silico` package accompanied by rese
 - [x] 1.1.4. [Python] Create an `environment_check` command-line entry point that verifies whether the package can perform its minimum supported workflow.
 - [x] 1.1.5. [Python] Record the Python version, operating-system details, and versions of all required scientific libraries so that a run can be reproduced and diagnosed.
 
-- [ ] 1.1.6. [Research] Distinguish computational hypotheses, in vitro results, in vivo results, and clinical evidence to prevent claims from exceeding the evidence supporting them.
-- [ ] 1.1.7. [Python] Make `environment_check` run a deterministic smoke test through the public API by constructing a scientific record, calculating one property, and writing an output file.
-- [ ] 1.1.8. [Research] Explain where cheminformatics, molecular docking, molecular dynamics, and machine learning fit in the pipeline, including what each method can and cannot establish about clinical efficacy.
+- [x] 1.1.6. [Research] Distinguish computational hypotheses, in vitro results, in vivo results, and clinical evidence to prevent claims from exceeding the evidence supporting them.
+- [x] 1.1.7. [Python] Make `environment_check` run a deterministic smoke test through the public API by constructing a scientific record, calculating one property, and writing an output file.
+- [x] 1.1.8. [Research] Explain where cheminformatics, molecular docking, molecular dynamics, and machine learning fit in the pipeline, including what each method can and cannot establish about clinical efficacy.
 - [ ] 1.1.9. [Python] Add tests that identify missing dependencies or capabilities with actionable failure messages instead of allowing obscure downstream errors.
 - [ ] 1.1.10. [Python] Define package-level configuration for `data/`, `research/`, `results/`, and `tests/` so that paths remain explicit and reproducible across environments.
 

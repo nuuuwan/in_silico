@@ -18,17 +18,17 @@ This is an educational research project. Computational results do not prove that
 The supported API is exported from `in_silico`:
 
 ```python
-from in_silico import (
-	Configuration,
-	EnvironmentCheck,
-	EnvironmentReport,
-	LibraryVersion,
-	Provenance,
-	RecordValidator,
-	ScientificRecord,
-	ValidationResult,
-	Workflow,
-)
+from in_silico import CalculatedProperty
+from in_silico import Configuration
+from in_silico import EnvironmentCheck
+from in_silico import EnvironmentReport
+from in_silico import LibraryVersion
+from in_silico import Provenance
+from in_silico import RecordPropertyCalculator
+from in_silico import RecordValidator
+from in_silico import ScientificRecord
+from in_silico import ValidationResult
+from in_silico import Workflow
 ```
 
 Implementations are separated into `configuration`, `provenance`, `records`,
@@ -48,6 +48,10 @@ The report records the package and Python versions, Python implementation,
 operating system and release, machine architecture, and versions of all required
 runtime libraries. The current foundation has no required scientific libraries,
 so `libraries` is empty until those dependencies are introduced.
+
+The command also writes `environment_check_smoke_test.json`. This deterministic
+artifact proves that the public API can construct and validate a scientific
+record, calculate its `record_value_count` property, and write a result file.
 
 ## Documents
 
