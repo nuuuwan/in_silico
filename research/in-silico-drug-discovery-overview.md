@@ -15,9 +15,74 @@ computational work contributes, what evidence later stages require, and how the
 project must qualify its conclusions. The stages overlap and often feed back into
 one another; they are a decision framework, not a guaranteed linear sequence.
 
+## The pipeline in plain language
+
+Drug discovery begins with a problem, not with a finished medicine. Researchers
+first decide what part of a disease might be changed, then look for substances
+that could change it. Promising substances are improved and tested in
+increasingly realistic settings. Only much later are they tested in people.
+
+Each stage asks a different question:
+
+1. **Target identification: What should we try to change?** A target is
+   something involved in a disease, such as a protein used by a virus or a
+   process inside a human cell. Researchers study the disease and gather
+   evidence that changing this target could help. They must also ask whether it
+   can be changed without causing unacceptable harm. A plausible target is a
+   starting hypothesis, not proof that a treatment will work.
+2. **Hit discovery: Can anything produce the effect we want?** Researchers test
+   or computationally rank many compounds. A compound that gives a promising
+   early signal is called a *hit*. A computer prediction is only a suggestion
+   for testing. Even a laboratory signal must be repeated and checked because
+   the compound, equipment, or test method can create a misleading result [2].
+3. **Hit-to-lead work: Can a hit become a serious candidate?** Researchers
+   confirm the hit and compare related compounds. Chemists may change parts of
+   a molecule, then test each new version. They seek a *lead* that has a useful
+   balance: strong enough activity, fewer unwanted effects, suitable movement
+   through the body, reasonable stability, and a practical way to manufacture
+   and give it. Improving one feature can worsen another, so this is repeated
+   design, testing, and learning rather than a single ranking exercise [1, 2].
+4. **Preclinical evaluation: Is the candidate suitable to consider for human
+   testing?** Researchers study the candidate in laboratory systems and, where
+   justified, living organisms. They examine what the compound does, how the
+   body handles it, what dose produces exposure, and what harmful effects may
+   occur. These studies help decide whether and how to proceed to human trials;
+   they cannot guarantee safety or benefit in people [3, 4].
+5. **Clinical evaluation: What happens in people?** Clinical trials follow a
+   written plan and answer defined questions. Early trials mainly examine safety
+   and dosage. Later trials study whether the treatment helps people with the
+   condition, compare outcomes, and monitor adverse effects in larger groups
+   [4]. Regulators review the complete evidence rather than a single favorable
+   result [5]. Monitoring continues after approval because uncommon or delayed
+   effects may appear only during wider use [6].
+
+The flow is therefore not "computer prediction to medicine." It is closer to
+"hypothesis to test, result to better test, and evidence to a decision." Many
+ideas stop because later evidence does not support them. Teams may also return
+to an earlier stage when a test reveals a problem or a new opportunity.
+
+### Where this project fits
+
+`in_silico` supports decisions near the beginning of this pipeline. Its later
+capabilities can be placed as follows:
+
+| Project capability | Main pipeline use | What its output means |
+| --- | --- | --- |
+| Biological vocabulary and target records | Target identification | Organizes what a proposed target is and why it may matter |
+| Public compound and bioactivity data | Target identification and hit discovery | Collects prior evidence and possible starting compounds |
+| Molecular representations and properties | Hit discovery and hit-to-lead | Describes compounds consistently and highlights properties to investigate |
+| Similarity search | Hit discovery and hit-to-lead | Finds related compounds that may be useful comparisons |
+| Prediction and model evaluation | Hit discovery and hit-to-lead | Ranks hypotheses for testing and reports uncertainty |
+| Candidate ranking and reporting | Hit discovery and hit-to-lead | Makes prioritization evidence and assumptions inspectable |
+
+These capabilities can help researchers choose the next experiment. They do not
+perform hit confirmation, preclinical studies, clinical trials, regulatory
+review, or safety monitoring. A highly ranked compound remains a computational
+hypothesis until appropriate experiments produce stronger evidence.
+
 ## Discovery and development
 
-### Disease understanding and target selection
+### Disease understanding and target identification
 
 Research first defines the unmet need and the biological process to influence.
 A target may be a viral protein, host protein, pathway, or measurable phenotype.
@@ -44,7 +109,7 @@ assays have been considered. The NCATS Assay Guidance Manual treats assay
 optimization, interference, statistical validation, secondary assays, and data
 reporting as integral to reliable screening [2].
 
-### Hit confirmation and lead optimization
+### Hit-to-lead and lead optimization
 
 Confirmed hits are investigated for potency, selectivity, mechanism, chemical
 identity, and reproducibility. Medicinal chemistry and repeated testing seek a
