@@ -8,8 +8,11 @@ from in_silico import ChEMBLSource
 class TestChEMBLSource(TestCase):
     def test_search_follows_source_relationships(self) -> None:
         client, expected = self.client()
+        session = self.session(expected["dose_responses"][0], 200)
 
-        result = ChEMBLSource(client).fetch("dengue virus", ("IC50",), 10)
+        result = ChEMBLSource(client, session).fetch(
+            "dengue virus", ("IC50",), 10
+        )
 
         for entity, records in expected.items():
             self.assertEqual(result.records[entity], records)
@@ -21,6 +24,16 @@ class TestChEMBLSource(TestCase):
             assay_chembl_id__in=("CHEMBLA1",),
             standard_type__in=("IC50",),
         )
+
+    def test_missing_supplementary_record_is_not_an_error(self) -> None:
+        client, _ = self.client()
+        session = self.session({}, 404)
+
+        result = ChEMBLSource(client, session).fetch(
+            "dengue virus", ("IC50",), 10
+        )
+
+        self.assertEqual(result.records["dose_responses"], [])
 
     def client(self) -> tuple[SimpleNamespace, dict]:
         target = {"target_chembl_id": "CHEMBLT1", "pref_name": "Dengue"}
@@ -43,14 +56,11 @@ class TestChEMBLSource(TestCase):
             activity=Mock(),
             molecule=Mock(),
             chembl_release=Mock(),
-            activity_supplementary_data_by_activity=Mock(),
         )
         client.target.search.return_value = [target]
         client.assay.filter.return_value = [assay]
         client.activity.filter.return_value = [activity]
         client.molecule.filter.return_value = [molecule]
-        supplementary = client.activity_supplementary_data_by_activity
-        supplementary.filter.return_value = [dose_response]
         client.chembl_release.all.return_value = [{"chembl_release": "36"}]
         expected = {
             "targets": [target],
@@ -60,3 +70,10 @@ class TestChEMBLSource(TestCase):
             "dose_responses": [dose_response],
         }
         return client, expected
+
+    def session(self, payload: dict, status_code: int) -> Mock:
+        response = Mock(status_code=status_code)
+        response.json.return_value = payload
+        session = Mock()
+        session.get.return_value = response
+        return session

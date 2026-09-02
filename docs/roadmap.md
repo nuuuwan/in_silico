@@ -41,7 +41,7 @@ By the end of 1.1, the learner should be able to place a result in the drug-disc
   Build source adapters using the official ChEMBL web-resource client and PubChem PUG REST. They search rather than assuming target, compound, or assay identifiers; retrieve matching target, assay, molecule, activity, and available dose–response records; preserve source relationships; and write immutable raw snapshots with retrieval manifests. These adapters become ingestion components for later dataset stages.
 
   ```bash
-  tools/sources/fetch_bioactivity.py --sources chembl,pubchem --query "dengue virus" --activity-types IC50,EC50,CC50 --output-dir data/raw --manifest data/raw/bioactivity.manifest.json
+  tools/sources/fetch_bioactivity.py --sources chembl,pubchem --query "dengue virus" --activity-types IC50,EC50,CC50
   ```
 
 - [ ] 1.1.2. [Research + Python] Learn how a biological target, binding event, mechanism of action, cellular phenotype, and clinical outcome differ in public scientific records.

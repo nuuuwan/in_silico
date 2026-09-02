@@ -13,24 +13,26 @@ them. Start from the repository root:
 tools/sources/fetch_bioactivity.py \
   --sources chembl,pubchem \
   --query "dengue virus" \
-  --activity-types IC50,EC50,CC50 \
-  --output-dir data/raw \
-  --manifest data/raw/bioactivity.manifest.json
+  --activity-types IC50,EC50,CC50
 ```
 
-`data/raw` now contains JSON Lines files. Each line is one record written as
-JavaScript Object Notation (JSON), a structured text format. Open a target file,
-choose an identifier, and search for that identifier in an assay file. Then
-follow an assay identifier into activities and a compound identifier into
+The terminal summarizes the search and shows how many targets, assays,
+molecules, activities, and dose responses came from each source.
+
+The reported manifest path identifies a request-specific folder under
+`data/raw`. It contains JSON Lines files. Each line is one record written as
+JavaScript Object Notation (JSON), a structured text format. Open a target
+file, choose an identifier, and search for that identifier in an assay file.
+Then follow an assay identifier into activities and a compound identifier into
 molecules. How many steps separate the disease search from a measured chemical?
 
 ## Ask Two Libraries the Same Question
 
-Run the command once with `--sources chembl`, using a fresh output directory and
-manifest name. Run it again with `--sources pubchem`. ChEMBL organizes published
+Run the command once with `--sources chembl`, then with `--sources pubchem`.
+Each request automatically gets its own folder. ChEMBL organizes published
 drug-discovery data; PubChem collects chemical and biological test records from
-many depositors. Compare the fields and number of links rather than assuming one
-answer is complete. Which details appear in only one source?
+many depositors. Compare the fields and number of links rather than assuming
+one answer is complete. Which details appear in only one source?
 
 ## Change What Counts as Activity
 
@@ -49,9 +51,9 @@ the same concentration be a poor lead?
 Open the manifest after each run. It records when retrieval happened, which web
 addresses were requested, source versions, access terms, record counts, and a
 SHA-256 checksum. A checksum is a digital fingerprint: if a snapshot changes,
-its fingerprint changes too. Re-run the same command without changing paths.
-The refusal to overwrite is deliberate because later analyses must be able to
-identify the exact records they used.
+its fingerprint changes too. Re-run the same command without changing paths;
+it reports the existing result without downloading or overwriting anything.
+This preserves the exact records used by later analyses.
 
 Use `tools/sources/fetch_bioactivity.py --help` to discover smaller limits or
 different source combinations. Public services change and can be temporarily

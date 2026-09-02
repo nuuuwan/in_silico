@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from pathlib import Path
 
-from in_silico.sources.ChEMBLSource import ChEMBLSource
+from in_silico.sources.ChEMBLSource.ChEMBLSource import ChEMBLSource
 from in_silico.sources.PubChemSource.PubChemSource import PubChemSource
 from in_silico.sources.SnapshotWriter.SnapshotWriter import SnapshotWriter
 
