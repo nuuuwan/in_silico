@@ -1,84 +1,101 @@
 # In Silico Drug Discovery Overview
 
-*2026-09-02 by @nuuuwan*
+Published 2026-09-02 by @nuuuwan.
 
-## Purpose and scope
+## What drug discovery means
 
-Drug discovery is an iterative process for turning knowledge about disease into
-interventions whose quality, safety, and efficacy can be tested. Computational
-methods can organize evidence, generate hypotheses, and prioritize experiments.
-They do not by themselves demonstrate that a compound is safe or effective in
-people.
+Drug discovery is the search for substances that may prevent, control, or cure
+a disease. A substance being studied for this purpose is often called a
+*compound*.
 
-This note provides the shared model used by `in_silico`. It describes where
-computational work contributes, what evidence later stages require, and how the
-project must qualify its conclusions. The stages overlap and often feed back into
-one another; they are a decision framework, not a guaranteed linear sequence.
+Finding an interesting compound is only the beginning. Researchers must learn
+what it does, how much is needed, how the body handles it, and whether it causes
+harm. They must then test whether it helps people. This takes many rounds of
+research, and most early ideas do not become medicines.
 
-## The pipeline in plain language
+`in_silico` means "performed on a computer." Computer methods can sort large
+amounts of information, find patterns, and suggest which compounds deserve
+closer study. They cannot prove that a compound is safe or that it treats a
+disease. Only suitable experiments can provide that evidence.
 
-Drug discovery begins with a problem, not with a finished medicine. Researchers
-first decide what part of a disease might be changed, then look for substances
-that could change it. Promising substances are improved and tested in
-increasingly realistic settings. Only much later are they tested in people.
+## The journey from an idea to a medicine
 
-Each stage asks a different question:
+Drug discovery is often described as a series of stages. Real projects may move
+back and forth between them when new results raise new questions.
 
-1. **Target identification: What should we try to change?** A target is
-   something involved in a disease, such as a protein used by a virus or a
-   process inside a human cell. Researchers study the disease and gather
-   evidence that changing this target could help. They must also ask whether it
-   can be changed without causing unacceptable harm. A plausible target is a
-   starting hypothesis, not proof that a treatment will work.
-2. **Hit discovery: Can anything produce the effect we want?** Researchers test
-   or computationally rank many compounds. A compound that gives a promising
-   early signal is called a *hit*. A computer prediction is only a suggestion
-   for testing. Even a laboratory signal must be repeated and checked because
-   the compound, equipment, or test method can create a misleading result [2].
-3. **Hit-to-lead work: Can a hit become a serious candidate?** Researchers
-   confirm the hit and compare related compounds. Chemists may change parts of
-   a molecule, then test each new version. They seek a *lead* that has a useful
-   balance: strong enough activity, fewer unwanted effects, suitable movement
-   through the body, reasonable stability, and a practical way to manufacture
-   and give it. Improving one feature can worsen another, so this is repeated
-   design, testing, and learning rather than a single ranking exercise [1, 2].
-4. **Preclinical evaluation: Is the candidate suitable to consider for human
-   testing?** Researchers study the candidate in laboratory systems and, where
-   justified, living organisms. They examine what the compound does, how the
-   body handles it, what dose produces exposure, and what harmful effects may
-   occur. These studies help decide whether and how to proceed to human trials;
-   they cannot guarantee safety or benefit in people [3, 4].
-5. **Clinical evaluation: What happens in people?** Clinical trials follow a
-   written plan and answer defined questions. Early trials mainly examine safety
-   and dosage. Later trials study whether the treatment helps people with the
-   condition, compare outcomes, and monitor adverse effects in larger groups
-   [4]. Regulators review the complete evidence rather than a single favorable
-   result [5]. Monitoring continues after approval because uncommon or delayed
-   effects may appear only during wider use [6].
+### 1. Target identification: What should we change?
 
-The flow is therefore not "computer prediction to medicine." It is closer to
-"hypothesis to test, result to better test, and evidence to a decision." Many
-ideas stop because later evidence does not support them. Teams may also return
-to an earlier stage when a test reveals a problem or a new opportunity.
+A disease changes how the body, a cell, or an infectious organism works.
+Researchers first look for something involved in that change. This is called a
+*target*. A target might be a protein used by a virus or a process inside a
+human cell. A protein is a tiny biological machine that performs a job in a
+living system.
 
-### Where this project fits
+Researchers ask whether changing the target is likely to help with the disease
+and whether it can be changed without causing unacceptable harm. Computers can
+bring together published research, genetic information, protein structures, and
+known interactions. This supports a target hypothesis: a reasoned proposal about
+what to study. It does not prove that changing the target will help a patient.
 
-`in_silico` supports decisions near the beginning of this pipeline. Its later
-capabilities can be placed as follows:
+### 2. Hit discovery: What might affect the target or disease?
 
-| Project capability | Main pipeline use | What its output means |
-| --- | --- | --- |
-| Biological vocabulary and target records | Target identification | Organizes what a proposed target is and why it may matter |
-| Public compound and bioactivity data | Target identification and hit discovery | Collects prior evidence and possible starting compounds |
-| Molecular representations and properties | Hit discovery and hit-to-lead | Describes compounds consistently and highlights properties to investigate |
-| Similarity search | Hit discovery and hit-to-lead | Finds related compounds that may be useful comparisons |
-| Prediction and model evaluation | Hit discovery and hit-to-lead | Ranks hypotheses for testing and reports uncertainty |
-| Candidate ranking and reporting | Hit discovery and hit-to-lead | Makes prioritization evidence and assumptions inspectable |
+Researchers look for compounds that produce a useful signal. They may test many
+compounds in the laboratory or use computers to rank likely candidates. The FDA
+notes that thousands may be considered before a small number are selected for
+more study [1].
 
-These capabilities can help researchers choose the next experiment. They do not
-perform hit confirmation, preclinical studies, clinical trials, regulatory
-review, or safety monitoring. A highly ranked compound remains a computational
-hypothesis until appropriate experiments produce stronger evidence.
+An early promising compound is called a *hit*. A computer-ranked hit is only a
+suggestion for laboratory testing. A laboratory hit is also uncertain. The
+result might come from a measurement problem, contamination, or an unexpected
+reaction with the test itself. Researchers therefore repeat the test and use
+different tests to check that the signal is real [2].
+
+### 3. Hit-to-lead work: Can a hit become a good candidate?
+
+A real hit may still be a poor medicine. It might break down too quickly, fail
+to reach the right part of the body, affect healthy cells, or be difficult to
+make. Researchers compare related compounds and chemists alter their structures.
+Each version is tested again.
+
+The aim is to find a *lead*: a compound with a useful balance of desired
+activity, limited unwanted effects, suitable behavior in the body, and practical
+production. Improving one feature can make another worse, so there is rarely one
+simple "best score" [1, 2].
+
+### 4. Preclinical evaluation: Is human testing reasonable?
+
+Before testing a candidate in people, researchers study what it does and what
+harm it might cause. Some studies use isolated chemicals, proteins, or cells.
+These are called *in vitro* studies, meaning studies outside a living body.
+Other studies use a whole living organism. These are called *in vivo* studies.
+
+Researchers examine the candidate's effects, how it moves through and leaves
+the body, and how dose relates to both exposure and harm. Regulated preclinical
+studies follow standards for plans, equipment, records, staff, reports, and
+quality checks [3]. The results help decide whether and how to begin human
+trials. They cannot guarantee safety or benefit in people [4].
+
+### 5. Clinical evaluation: What happens in people?
+
+A clinical trial is a planned study involving people. Its written plan states
+who may take part, what treatment they receive, what will be measured, and how
+the results will be analyzed [4].
+
+Clinical trials usually proceed through phases:
+
+- **Phase 1** mainly studies safety and dosage in a small group.
+- **Phase 2** begins to study whether the treatment helps people with the
+  condition and continues to watch for side effects.
+- **Phase 3** tests benefits and harmful effects in a larger group, often by
+  comparing the treatment with another treatment or a control group.
+
+Regulators review all the available evidence, including laboratory studies,
+clinical trials, manufacturing, and quality information [5]. The exact process
+depends on the country. The FDA sources used here describe the United States and
+serve as a clear public example, not a worldwide rulebook.
+
+Approval is not the end of learning. Rare or delayed problems may appear only
+after many more people use a medicine, so safety monitoring continues [6].
 
 ## Discovery and development
 
