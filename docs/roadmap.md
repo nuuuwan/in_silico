@@ -36,7 +36,7 @@ Build enough biological and pharmacological understanding to interpret later com
 
 By the end of 1.1, the learner should be able to place a result in the drug-discovery pipeline, interpret basic potency and toxicity measurements, distinguish evidence levels, recognize an unsupported claim, and choose a sensible next experiment. The code produced should also establish the first reusable scientific models and numerical functions in `src/in_silico/`.
 
-- [ ] 1.1.1. [Research + Python] Learn what dengue targets, assays, compounds, and activity measurements look like in real public drug-discovery databases.
+- [x] 1.1.1. [Research + Python] Learn what dengue targets, assays, compounds, and activity measurements look like in real public drug-discovery databases.
 
   Build source adapters using the official ChEMBL web-resource client and PubChem PUG REST. They search rather than assuming target, compound, or assay identifiers; retrieve matching target, assay, molecule, activity, and available dose–response records; preserve source relationships; and write immutable raw snapshots with retrieval manifests. These adapters become ingestion components for later dataset stages.
 
