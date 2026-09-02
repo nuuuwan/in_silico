@@ -20,6 +20,9 @@ The supported API is exported from `in_silico`:
 ```python
 from in_silico import (
 	Configuration,
+	EnvironmentCheck,
+	EnvironmentReport,
+	LibraryVersion,
 	Provenance,
 	RecordValidator,
 	ScientificRecord,
@@ -29,7 +32,22 @@ from in_silico import (
 ```
 
 Implementations are separated into `configuration`, `provenance`, `records`,
-`validation`, and `workflows` packages under `src/in_silico/`.
+`validation`, `workflows`, and `environment` packages under `src/in_silico/`.
+
+## Environment check
+
+Install the package, then run its minimum supported workflow and print a JSON
+environment report:
+
+```bash
+python3 -m pip install -e .
+environment_check
+```
+
+The report records the package and Python versions, Python implementation,
+operating system and release, machine architecture, and versions of all required
+runtime libraries. The current foundation has no required scientific libraries,
+so `libraries` is empty until those dependencies are introduced.
 
 ## Documents
 

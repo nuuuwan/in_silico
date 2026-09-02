@@ -8,6 +8,10 @@ version = "0.1.0"
 description = "Tools for reproducible in silico drug-discovery research"
 readme = "README.md"
 requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+environment_check = "in_silico.environment:EnvironmentCheck.main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -24,8 +24,8 @@ The output of 1.1 is a usable, versioned `in_silico` package accompanied by rese
 - [x] 1.1.1. [Python] Define the initial `in_silico` package layout under `src/in_silico/`, separating configuration, records, provenance, validation, and workflow execution behind a clear public API.
 - [x] 1.1.2. [Research] Write `research/in-silico-drug-discovery-overview.md`, giving later implementation work a shared account of the drug-discovery process and its evidence standards.
 - [x] 1.1.3. [Research] Explain target identification, hit discovery, hit-to-lead work, preclinical evaluation, and clinical evaluation so that each project capability can be placed in the wider pipeline.
-- [ ] 1.1.4. [Python] Create an `environment_check` command-line entry point that verifies whether the package can perform its minimum supported workflow.
-- [ ] 1.1.5. [Python] Record the Python version, operating-system details, and versions of all required scientific libraries so that a run can be reproduced and diagnosed.
+- [x] 1.1.4. [Python] Create an `environment_check` command-line entry point that verifies whether the package can perform its minimum supported workflow.
+- [x] 1.1.5. [Python] Record the Python version, operating-system details, and versions of all required scientific libraries so that a run can be reproduced and diagnosed.
 
 - [ ] 1.1.6. [Research] Distinguish computational hypotheses, in vitro results, in vivo results, and clinical evidence to prevent claims from exceeding the evidence supporting them.
 - [ ] 1.1.7. [Python] Make `environment_check` run a deterministic smoke test through the public API by constructing a scientific record, calculating one property, and writing an output file.
